@@ -21,13 +21,34 @@ export default {
     this.loaded = false
 
     try {
-      const { userlist } = await fetch('https://data.cityofnewyork.us/resource/43nn-pn8j.json')
-      this.chartdata = userlist
-
+      const { response } = await fetch('https://data.cityofnewyork.us/resource/43nn-pn8j.json?$limit=300000')
+      this.chartData = response
+      // if(!response.ok){
+      //   throw new Error(response.status);
+      // }
+      const data = await response.json
+      console.log(data)
       this.loaded = true
     } catch (e) {
       console.error(e)
     }
   }
 }
+
+// async function today(x) {
+//   try {
+//     const response = await fetch("https://data.cityofnewyork.us/resource/43nn-pn8j.json?$limit=300000");
+//     if (!response.ok) {
+//       throw new Error(response.status);
+//     }
+
+//     const data = await response.json();
+//     console.log(data); 
+
+//   } catch(err) {
+//     console.log(err.message); 
+//   }
+
+// }
+// today()
 </script>
