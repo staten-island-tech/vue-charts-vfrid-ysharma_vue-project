@@ -2,15 +2,9 @@
   <div class="container">
     <Bar v-if="loaded" :data="chartData" />
   </div>
-<<<<<<< Updated upstream
-</template>
-
-<script>
-=======
   </template>
   
   <script>
->>>>>>> Stashed changes
 import { Bar } from 'vue-chartjs'
 import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
 
@@ -27,7 +21,6 @@ export default {
     this.loaded = false
 
     try {
-<<<<<<< Updated upstream
       const { response } = await fetch('https://data.cityofnewyork.us/resource/43nn-pn8j.json?$limit=300000')
       this.chartData = response
       // if(!response.ok){
@@ -35,18 +28,12 @@ export default {
       // }
       const data = await response.json
       console.log(data)
-=======
-      const { userlist } = await fetch('https://data.cityofnewyork.us/resource/43nn-pn8j.json')
-      this.chartdata = userlist
-
->>>>>>> Stashed changes
       this.loaded = true
     } catch (e) {
       console.error(e)
     }
   }
 }
-<<<<<<< Updated upstream
 
 // async function today(x) {
 //   try {
@@ -65,6 +52,3 @@ export default {
 // }
 // today()
 </script>
-=======
-  </script>
->>>>>>> Stashed changes
