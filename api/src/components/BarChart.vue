@@ -29,8 +29,8 @@ export default {
       const data = await response.json
       console.log(data)
       this.loaded = true
-    } catch (e) {
-      console.error(e)
+    } catch (err) {
+      console.log(err.message)
     }
   }
 }
