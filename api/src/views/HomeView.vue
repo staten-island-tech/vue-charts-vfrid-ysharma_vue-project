@@ -39,30 +39,44 @@ async function f1() {
       boronumbers[index]+=1
     }
   }
+  console.log(boros, boronumbers)
   let returned = {
         labels: boros,
         datasets: [ { data: boronumbers } ]
       }
   return returned
 }
-
+const returned_data = await f1()
 export default {
   name: 'BarChart',
   components: { Bar },
-  data: () => ({
-    loaded: false,
-    chartData: null
-  }),
-  async mounted () {
-    this.loaded = false
+  // data: () => ({
+  //   loaded: false,
+  //   chartData: null
+  // }),
+  // async mounted () {
+  //   this.loaded = false
 
-    try {
-      const { userlist } = await f1()
-      this.chartdata = userlist
+  //   try {
+  //     const { userlist } = await f1()
+  //     this.chartdata = userlist
 
-      this.loaded = true
-    } catch (e) {
-      console.error(e)
+  //     this.loaded = true
+  //   } catch (e) {
+  //     console.error(e)
+  //   }
+  // }
+  data() {
+    return {
+      chartData: {
+        labels: [ returned_data.labels ],
+        datasets: [
+          {
+            label: 'data',
+            data: returned_data.datasets
+          }
+        ]
+      }
     }
   }
 }
@@ -70,7 +84,7 @@ export default {
 
 <template>
   <main>
-    <Bar v-if="loaded" :data="chartData" />
-  <button @click="rask">boros</button>
+    <Bar :data="chartData" />
+  <!-- <button @click="rask">boros</button> -->
   </main>
 </template>
