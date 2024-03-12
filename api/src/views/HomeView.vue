@@ -1,8 +1,8 @@
 <script>
 import { Bar, Pie } from 'vue-chartjs'
-import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
 
-ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
+ChartJS.register(ArcElement, Tooltip, Legend)
 
 
 async function today(x) {
@@ -51,7 +51,7 @@ const returned_data = await f1()
 console.log(returned_data.datasets)
 export default {
   name: 'BarChart',
-  components: { Bar },
+  components: { Pie },
   // data: () => ({
   //   loaded: false,
   //   chartData: null
@@ -74,8 +74,7 @@ export default {
         labels:  returned_data.labels ,
         datasets: [
           {
-            label: 'data',
-            backgroundColor: '#f87979',
+            backgroundColor: ['#f7706e', '#497397', '#49f493', '#a16395', '#e9e572'],
             data: returned_data.datasets
           }
         ]
@@ -87,7 +86,7 @@ export default {
 
 <template>
   <main>
-    <Bar :data="chartData" />
+    <Pie :data="chartData" />
   <!-- <button @click="rask">boros</button> -->
   </main>
 </template>
