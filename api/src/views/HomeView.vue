@@ -1,5 +1,5 @@
 <script>
-import { Bar } from 'vue-chartjs'
+import { Bar, Pie } from 'vue-chartjs'
 import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
@@ -42,11 +42,13 @@ async function f1() {
   console.log(boros, boronumbers)
   let returned = {
         labels: boros,
-        datasets: [ { data: boronumbers } ]
+        datasets:  boronumbers
       }
   return returned
 }
+
 const returned_data = await f1()
+console.log(returned_data.datasets)
 export default {
   name: 'BarChart',
   components: { Bar },
@@ -69,10 +71,11 @@ export default {
   data() {
     return {
       chartData: {
-        labels: [ returned_data.labels ],
+        labels:  returned_data.labels ,
         datasets: [
           {
             label: 'data',
+            backgroundColor: '#f87979',
             data: returned_data.datasets
           }
         ]
