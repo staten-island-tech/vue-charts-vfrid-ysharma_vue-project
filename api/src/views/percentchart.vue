@@ -21,7 +21,7 @@ async function today(x) {
   }
 }
 let boros = []
-let boronumbers=[]
+let borototals=[]
 let violations = []
 let boropercents=[]
 let violationnumbers = []
@@ -31,32 +31,26 @@ let criticalnumber = []
 async function f1() {
   const data = await today()
   for(let i=0; i<data.length; i++){
-      if(!boros.includes(data[i].boro)){
-      boros.push(data[i].boro)
-      boronumbers.push(1)
-      violationnumbers.push(0)
-      if(data[i].hasOwnProperty('property1')){
+    if(data[i].violationcode){
+       if(!boros.includes(data[i].boro)){
+        boros.push(data[i].boro)
+        boronumbers.push(1)
+        violationnumbers.push(1)
+        }
+        else{
         let index=boros.indexOf(data[i].boro)
+        boronumbers[index]+=1
         violationnumbers[index]+=1
-      }
-      }
-      else{
-      let index=boros.indexOf(data[i].boro)
-      boronumbers[index]+=1
-      if(data[i].violationcode !== null){
-        let index=boros.indexOf(data[i].boro)
-        violationnumbers[index]+=1
-      }
-      }
+        }}
   }
   for(let i=0; i<boros.length; i++){
-    let percentage = (violationnumbers[i] / boronumbers[i])*100
+    let percentage = (violationnumbers[i] / borototals[i])*100
     boropercents.push(percentage)
   }
-  console.log(boros, boropercents)
+  console.log(boros, boronumbers)
   let returned = {
         labels: boros,
-        datasets:  boropercents
+        datasets:  percentage
       }
   return returned
 }
