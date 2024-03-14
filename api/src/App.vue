@@ -1,10 +1,10 @@
 <script>
 import { RouterLink, RouterView } from 'vue-router'
-import BarChart from './components/BarChart.vue'
+import NameChart from './components/NameChart.vue'
 
 export default {
   name: 'App',
-  components: { BarChart }
+  components: { NameChart }
 }
 
 </script>
