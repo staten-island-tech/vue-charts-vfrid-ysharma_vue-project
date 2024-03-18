@@ -5,7 +5,7 @@ import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, Li
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
 
-async function today() {
+async function today(x) {
   try {
     const response = await fetch("https://data.cityofnewyork.us/resource/43nn-pn8j.json?$limit=300000");
     if (!response.ok) {
@@ -21,37 +21,40 @@ async function today() {
   }
 }
 let boros = []
-let boronumbers=[]
-let violations = []
-let boropercents=[]
+let borototals=[]
 let violationnumbers = []
-let criticalflag = []
-let criticalnumber = []
+let boropercents=[]
+
 
 async function f1() {
   const data = await today()
   for(let i=0; i<data.length; i++){
-      if(data[i].hasOwnProperty('violation_code') && !violations.includes(data[i].violation_code)){
-        violations.push(data[i].violation_code)
+    if(data[i].violationcode){
+       if(!boros.includes(data[i].boro)){
+        boros.push(data[i].boro)
+        boronumbers.push(1)
         violationnumbers.push(1)
-
-        }   
-      else if(data[i].hasOwnProperty('violation_code')){
-        let index=violations.indexOf(data[i].violation_code)
+        }
+        else{
+        let index=boros.indexOf(data[i].boro)
+        boronumbers[index]+=1
         violationnumbers[index]+=1
-      }
+        }}
   }
-
-  console.log(violations, violationnumbers)
+  for(let i=0; i<boros.length; i++){
+    let percentage = (violationnumbers[i] / borototals[i])*100
+    boropercents.push(percentage)
+  }
+  console.log(boros, boronumbers)
   let returned = {
-        labels: violations,
-        datasets:  violationnumbers
+        labels: boros,
+        datasets:  percentage
       }
   return returned
 }
 
 const returned_data = await f1()
-// console.log(returned_data.datasets)
+console.log(returned_data.datasets)
 export default {
   name: 'BarChart',
   components: { Bar },
@@ -67,20 +70,18 @@ export default {
           }
         ]
       },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              min: 0,
+              max: 100
+          }
+        }]
+      }
+  }
     }
-  },
-  options: {
-    scales: {
-      x: {
-        display: true,
-      },
-      y: {
-                suggestedMin: 0,
-                suggestedMax: 32000
-            }
-    }
-  },
-  
+  }
 }
 </script>
 
