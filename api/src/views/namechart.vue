@@ -19,6 +19,7 @@ async function today(x) {
     console.log(err.message); 
   }
 }
+let boros = ['Manhattan', 'Brooklyn', 'Bronx', 'Staten Island', 'Queens']
 let names = []
 let big_names = []
 let boronumbers=[]
@@ -30,27 +31,31 @@ let criticalnumber = []
 
 async function f1() {
   const data = await today()
+  for(let i=0;i<boros.length;i++){
+    boronumbers.push(0)
+    console.log(boronumbers)
+  }
   for(let i=0; i<data.length; i++){
-    if(data[i].score > 0){
-        if(names.includes(data[i].dba)){
-            let index = names.indexOf(data[i].dba)
-            name_violations = names[index].violations
-            name_violations += 1
+    names.push({name:data[i].dba, score:Number(data[i].score), boro:data[i].boro})
+    for(let x=0; x<boros.length; x++){
+      if(names[i].boro == boros[x]){
+        if(names[i].score!=NaN){
+          boronumbers[x] += names[i].score
         }
         else{
-            names.push({name:data[i].dba, violations:1})
+          continue
         }
-    }
-    for(let i=0; i<names.length; i++){
-        if(names[i].violations > 100){
-            big_names.push({name:name[i].dba, violations:name[i.violations]})
-        }
-    }
+      }
+      else{
+        continue
+      }
   }
-  console.log(names, big_names)
+  }
+
+  console.log(names, boronumbers)
   let returned = {
-        labels: big_names.name,
-        datasets:  big_names.violations
+        labels: boros,
+        datasets:  boronumbers
       }
   return returned
 }

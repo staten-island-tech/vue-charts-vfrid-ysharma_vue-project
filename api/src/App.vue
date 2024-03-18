@@ -11,7 +11,6 @@ export default {
 
 <template>
 
-<BarChart />
   <RouterView />
 </template>
 
