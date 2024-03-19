@@ -1,30 +1,26 @@
-import apidata from "./apidata"
+import { returned_data } from "./apidata"
 
 export const data = {
-    labels: [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December'
-    ],
-    datasets: [
-      {
-        label: 'Data One',
-        backgroundColor: '#f87979',
-        data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11]
+  labels:  returned_data.labels ,
+  datasets: [
+    {
+      label: 'data',
+      backgroundColor: '#f87979',
+      data: returned_data.datasets
+    }
+  ]
+}
+
+export const options = {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        x: {
+          display: true,
+        },
+        y: {
+                  suggestedMin: 0,
+                  suggestedMax: 32000
+              }
       }
-    ]
-  }
-  
-  export const options = {
-    responsive: true,
-    maintainAspectRatio: false
-  }
+    }

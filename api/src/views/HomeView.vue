@@ -1,8 +1,8 @@
 <script>
-import { Bar, Pie } from 'vue-chartjs'
-import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
+import { Doughnut } from 'vue-chartjs'
 
-ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
+ChartJS.register(ArcElement, Tooltip, Legend)
 
 
 async function today() {
@@ -41,11 +41,20 @@ async function f1() {
         violationnumbers[index]+=1
       }
   }
+  let violationnumbers2 =[]
+  let violations2 =[]
+  for(let i=0; i<violationnumbers.length; i++){
+      if(violationnumbers[i]>1000){
+        violationnumbers2.push(violationnumbers[i])
+        violations2.push(violations[i])
+      }
+    }
+  console.log(violationnumbers)
 
-  console.log(violations, violationnumbers)
+  console.log(violationnumbers2)
   let returned = {
-        labels: violations,
-        datasets:  violationnumbers
+        labels: violations2,
+        datasets:  violationnumbers2
       }
   return returned
 }
@@ -54,40 +63,35 @@ const returned_data = await f1()
 // console.log(returned_data.datasets)
 export default {
   name: 'BarChart',
-  components: { Bar },
+  components: { Doughnut },
   data() {
     return {
       chartData: {
-        labels:  returned_data.labels ,
+        labels: returned_data.labels,
         datasets: [
           {
             label: 'data',
-            backgroundColor: '#f87979',
+            backgroundColor: ["#FF0000", "#FF3D00", "#FF7A00", "#FFB700", "#FFF400",
+  "#BFFF00", "#8BFF00", "#57FF00", "#23FF00", "#00FF23",
+  "#00FF57", "#00FF8B", "#00FFBF", "#00FFF4", "#00BFFF",
+  "#008BFF", "#0057FF", "#0023FF", "#2300FF", "#5700FF",
+  "#8B00FF", "#BF00FF", "#F400FF", "#FF00BF", "#FF008B",
+  "#FF0057"],
             data: returned_data.datasets
           }
         ]
       },
+      options: {
+      }
     }
-  },
-  options: {
-    scales: {
-      x: {
-        display: true,
-      },
-      y: {
-                suggestedMin: 0,
-                suggestedMax: 32000
-            }
-    }
-  },
-  
+  }
 }
 </script>
 
 <template>
   <main>
     <!-- <TheWelcome /> -->
-    <Bar :data="chartData" />
-  <!-- <button @click="rask">boros</button> -->
+    <Doughnut :data="chartData" :options="options"/>
+  <!-- <button @click="rask">boros</button> --> 
   </main>
 </template>
