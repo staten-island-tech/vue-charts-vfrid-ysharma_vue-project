@@ -41,17 +41,24 @@ async function f1() {
         violationnumbers[index]+=1
       }
   }
+  let all=[]
   let violationnumbers2 =[]
   let violations2 =[]
   for(let i=0; i<violationnumbers.length; i++){
       if(violationnumbers[i]>1000){
-        violationnumbers2.push(violationnumbers[i])
-        violations2.push(violations[i])
+        let temp=[]
+        temp.push(violationnumbers[i])
+        temp.push(violations[i])
+        all.push(temp)
       }
     }
-  console.log(violationnumbers)
+    all.sort((a, b) => b[0] - a[0]);
 
-  console.log(violationnumbers2)
+    for(let i=0; i<all.length; i++){
+      violationnumbers2.push(all[i][0])
+      violations2.push(all[i][1])
+    }
+    
   let returned = {
         labels: violations2,
         datasets:  violationnumbers2
@@ -71,17 +78,14 @@ export default {
         datasets: [
           {
             label: 'data',
-            backgroundColor: ["#FF0000", "#FF3D00", "#FF7A00", "#FFB700", "#FFF400",
-  "#BFFF00", "#8BFF00", "#57FF00", "#23FF00", "#00FF23",
-  "#00FF57", "#00FF8B", "#00FFBF", "#00FFF4", "#00BFFF",
-  "#008BFF", "#0057FF", "#0023FF", "#2300FF", "#5700FF",
-  "#8B00FF", "#BF00FF", "#F400FF", "#FF00BF", "#FF008B",
-  "#FF0057"],
+            backgroundColor: ["#FF0000", "#FF3D00", "#FF7A00", "#FFB700", "#FFF400","#BFFF00", "#8BFF00", "#57FF00", "#23FF00", "#00FF23","#00FF57", "#00FF8B", "#00FFBF", "#00FFF4", "#00BFFF","#008BFF", "#0057FF", "#0023FF", "#2300FF", "#5700FF","#8B00FF", "#BF00FF", "#F400FF", "#FF00BF", "#FF008B","#FF0057"],
             data: returned_data.datasets
           }
         ]
       },
       options: {
+        responsive: true,
+        maintainAspectRatio:true,
       }
     }
   }
@@ -90,8 +94,23 @@ export default {
 
 <template>
   <main>
-    <!-- <TheWelcome /> -->
-    <Doughnut :data="chartData" :options="options"/>
-  <!-- <button @click="rask">boros</button> --> 
+    <div class="flex-container">
+      <div class="chartcontainer">
+        <Doughnut :data="chartData" />
+      </div>
+  </div>
   </main>
 </template>
+
+
+<style scoped>
+.flex-container{
+  display: flex;
+  flex: auto
+}
+
+.chartcontainer {
+  height:1000px;
+  width:2000px
+}
+</style>
