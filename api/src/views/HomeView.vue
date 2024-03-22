@@ -1,5 +1,7 @@
 <template>
+  
   <div v-if="isDataLoaded">
+    
     <violationdonut :apidata="apiData" />
   </div>
   <div v-else>Loading...</div>
