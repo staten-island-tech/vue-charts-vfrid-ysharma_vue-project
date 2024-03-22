@@ -101,7 +101,7 @@ export default {
   }
  
   .chartcontainer {
-    height: 1000px;
-    width: 2000px
+    height: 750px;
+    width: 1500px
   }
   </style>
