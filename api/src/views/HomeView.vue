@@ -3,16 +3,21 @@
   <div v-if="isDataLoaded">
     
     <violationdonut :apidata="apiData" />
+    <NameChart :apidata="apiData" />
+
   </div>
   <div v-else>Loading...</div>
 </template>
 
 <script>
 import violationdonut from '../components/violationdonut.vue'
+import NameChart from '../components/NameChart.vue'
+
 
 export default {
   components: {
     violationdonut,
+    NameChart
   },
   data() {
     return {
@@ -28,8 +33,18 @@ export default {
     } catch (err) {
       console.log(err.message)
     }
+  },
+  async created() {
+    try {
+      const data = await today()
+      this.apiData = data
+      this.isDataLoaded = true
+    } catch (err) {
+      console.log(err.message)
+    }
   }
 }
+
 
 async function today() {
   try {
@@ -38,6 +53,7 @@ async function today() {
       throw new Error(response.status)
     }
 
+
     const data = await response.json()
     console.log(data)
     return data
@@ -45,4 +61,6 @@ async function today() {
     console.log(err.message)
   }
 }
+
+
 </script>

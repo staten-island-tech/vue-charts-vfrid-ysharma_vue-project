@@ -22,9 +22,11 @@ async function today(x) {
 }
 let boros = []
 let borototals=[]
-let violationnumbers = []
+let violations = []
 let boropercents=[]
-
+let violationnumbers = []
+let criticalflag = []
+let criticalnumber = []
 
 async function f1() {
   const data = await today()
@@ -69,17 +71,7 @@ export default {
             data: returned_data.datasets
           }
         ]
-      },
-      options: {
-        scales: {
-          yAxes: [{
-            ticks: {
-              min: 0,
-              max: 100
-          }
-        }]
       }
-  }
     }
   }
 }
