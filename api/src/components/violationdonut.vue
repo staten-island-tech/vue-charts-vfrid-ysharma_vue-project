@@ -76,7 +76,7 @@
           violationnumbers2.push(all[i][0])
           violations2.push(all[i][1])
         }
-  
+        console.log(violations2)
         this.chartData = {
           labels: violations2,
           datasets: [
