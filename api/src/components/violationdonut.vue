@@ -95,11 +95,13 @@
   <style scoped>
   .flex-container {
     display: flex;
-    flex: auto
+    flex: auto;
+    justify-content: center;
   }
   
   .chartcontainer {
-    height: 1000px;
-    width: 2000px
+    margin-top: 40px;
+    height: 800px;
+    width:800px;
   }
   </style>

@@ -97,11 +97,13 @@ export default {
   <style scoped>
   .flex-container {
     display: flex;
-    flex: auto
+    flex: auto;
+    justify-content: center;
   }
  
   .chartcontainer {
-    height: 750px;
-    width: 1500px
+    margin-top: 50px;
+    height: 700px;
+    width: 1350px;
   }
   </style>

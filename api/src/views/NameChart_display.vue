@@ -1,22 +1,18 @@
 <template>
   <navbar/>
-  <!-- <div v-if="isDataLoaded">
+  <div v-if="isDataLoaded">
     
-    <violationdonut :apidata="apiData" />
     <NameChart :apidata="apiData" />
 
   </div>
-  <div v-else>Loading...</div> -->
+  <div v-else>Loading...</div>
 </template>
-
 <script>
-import violationdonut from '../components/violationdonut.vue'
 import NameChart from '../components/NameChart.vue'
 import navbar from '../components/navbar.vue'
 
 export default {
   components: {
-    violationdonut,
     NameChart,
     navbar
   },
