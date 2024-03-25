@@ -1,13 +1,11 @@
 <template>
   <navbar/>
-  <!-- <div v-if="isDataLoaded">
+  <div v-if="isDataLoaded">
     
-    <violationdonut :apidata="apiData" />
-    <NameChart :apidata="apiData" />
     <totalpie :apidata="apiData" />
 
   </div>
-  <div v-else>Loading...</div> -->
+  <div v-else>Loading...</div>
 </template>
 
 <script>

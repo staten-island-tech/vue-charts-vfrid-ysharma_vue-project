@@ -85,11 +85,13 @@ ChartJS.register(ArcElement, Tooltip, Legend)
   <style scoped>
   .flex-container {
     display: flex;
-    flex: auto
+    flex: auto;
+    justify-content: center;
   }
   
   .chartcontainer {
-    height: 1000px;
-    width: 2000px
+    margin-top: 40px;
+    height: 850px;
+    width:850px;
   }
   </style>
