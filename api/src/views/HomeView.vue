@@ -4,6 +4,7 @@
     
     <violationdonut :apidata="apiData" />
     <NameChart :apidata="apiData" />
+    <totalpie :apidata="apiData" />
 
   </div>
   <div v-else>Loading...</div> -->
@@ -13,12 +14,15 @@
 import violationdonut from '../components/violationdonut.vue'
 import NameChart from '../components/NameChart.vue'
 import navbar from '../components/navbar.vue'
+import totalpie from '../components/totalpie.vue'
+
 
 export default {
   components: {
     violationdonut,
     NameChart,
-    navbar
+    navbar,
+    totalpie
   },
   data() {
     return {

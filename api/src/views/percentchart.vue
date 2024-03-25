@@ -21,41 +21,25 @@ async function today(x) {
   }
 }
 let boros = []
-let borototals=[]
-let violations = []
-let boropercents=[]
-let violationnumbers = []
-let criticalflag = []
-let criticalnumber = []
+let boronumbers=[]
 
-async function f1() {
-  const data = await today()
-  for(let i=0; i<data.length; i++){
-    if(data[i].violationcode){
-       if(!boros.includes(data[i].boro)){
-        boros.push(data[i].boro)
-        boronumbers.push(1)
-        violationnumbers.push(1)
-        }
-        else{
-        let index=boros.indexOf(data[i].boro)
-        boronumbers[index]+=1
-        violationnumbers[index]+=1
-        }}
-  }
-  for(let i=0; i<boros.length; i++){
-    let percentage = (violationnumbers[i] / borototals[i])*100
-    boropercents.push(percentage)
-  }
-  console.log(boros, boronumbers)
-  let returned = {
-        labels: boros,
-        datasets:  percentage
+for(let i=0; i<data.length; i++){
+  if(data[i].hasOwnProperty('violation_code')){
+      if(!boros.includes(data[i].boro)){
+      boros.push(data[i].boro)
+      boronumbers.push(1)
       }
-  return returned
+      else{
+      let index=boros.indexOf(data[i].boro)
+      boronumbers[index]+=1
+      }}
 }
 
-const returned_data = await f1()
+let returned = {
+      labels: boros,
+      datasets:  boronumbers
+    }
+
 console.log(returned_data.datasets)
 export default {
   name: 'BarChart',
