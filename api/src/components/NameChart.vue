@@ -71,7 +71,6 @@ export default {
                     labels: boros,
                     datasets:  [
                         {
-                            label: 'Average Score per Complaint',
                             backgroundColor: ['#f7706e', '#497397', '#49f493', '#a16395', '#e9e572'],
                             data:boronumbers
                         }

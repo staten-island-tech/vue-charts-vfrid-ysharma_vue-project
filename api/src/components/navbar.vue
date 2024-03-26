@@ -7,8 +7,8 @@
         <li><a href="/name_chart">Name Chart</a></li>
         <li><a href="/violation_chart">Violation Chart</a></li> -->
         <li><router-link to="/">Home</router-link></li>
-        <li><router-link to="/name_chart">Name Chart</router-link></li>
-        <li><router-link to="/violation_chart">Violation Chart</router-link></li>
+        <li><router-link to="/name_chart">Average Score</router-link></li>
+        <li><router-link to="/violation_chart">Most Common Violations</router-link></li>
       </ul>			
     </li>
   </ul>

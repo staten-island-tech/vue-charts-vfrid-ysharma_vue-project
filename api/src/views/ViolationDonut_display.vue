@@ -1,10 +1,13 @@
 <template>
   <navbar/>
+  <h2>Violations recorded at least 1000 times</h2>
+
     <div v-if="isDataLoaded">
       
       <violationdonut :apidata="apiData" />
   
     </div>
+
     <div v-else>Loading...</div>
   </template>
   <script>

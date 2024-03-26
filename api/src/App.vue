@@ -10,8 +10,10 @@ import { RouterLink, RouterView } from 'vue-router'
 </template>
 
 
-<style scoped>
-
+<style >
+h2{
+  text-align: center;
+}
 
 </style>
 

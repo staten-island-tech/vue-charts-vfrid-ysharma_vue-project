@@ -81,7 +81,6 @@
           labels: violations2,
           datasets: [
             {
-              label: 'apidata',
               backgroundColor: [  '#FF0000', '#FF3D00', '#FF7A00', '#FFB700', '#FFF400', '#BFFF00', '#8BFF00', '#57FF00', '#23FF00', '#00FF23',  '#00FF57', '#00FF8B', '#00FFBF', '#00FFF4', '#00BFFF', '#008BFF', '#0057FF', '#0023FF', '#2300FF', '#5700FF',  '#8B00FF', '#BF00FF', '#F400FF', '#FF00BF', '#FF008B', '#FF0057'],
               data: violationnumbers2
             }

@@ -1,5 +1,7 @@
 <template>
   <navbar/>
+  <h2>Total violations recorded in each borough</h2>
+
   <div v-if="isDataLoaded">
     
     <totalpie :apidata="apiData" />

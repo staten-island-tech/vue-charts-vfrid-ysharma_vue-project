@@ -1,5 +1,7 @@
 <template>
   <navbar/>
+  <h2>Average Score per Complaint</h2>
+
   <div v-if="isDataLoaded">
     
     <NameChart :apidata="apiData" />
