@@ -1,7 +1,8 @@
 <template>
   <navbar/>
   <h2>Average Score per Complaint</h2>
-
+  <h3>The higher the score, the more severe the violation</h3>
+  <h4>(The lower the better)</h4>
   <div v-if="isDataLoaded">
     
     <NameChart :apidata="apiData" />

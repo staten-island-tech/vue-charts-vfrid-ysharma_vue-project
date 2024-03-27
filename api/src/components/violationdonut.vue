@@ -4,7 +4,20 @@
         <div class="chartcontainer">
           <Doughnut :data="chartData" :options="options" />
         </div>
+        
       </div>
+      <div class="flex-contain">
+      <table border="1">
+        <tr>
+          <th>Violation Code</th>
+          <th>Violation Description</th>
+        </tr>
+        <tr v-if="all && all.length" v-for="(item, index) in all" :key="index">
+          <td>{{ item[1] }}</td>
+          <td>{{ item[2] }}</td>
+        </tr>
+      </table>
+    </div>
     </main>
   </template>
   
@@ -37,46 +50,46 @@
     },
     methods: {
       calculateChartData() {
-        let boros = []
-        let boronumbers = []
         let violations = []
-        let boropercents = []
         let violationnumbers = []
-        let criticalflag = []
-        let criticalnumber = []
-  
+        let violationdescriptions = []
+
         const data = this.apidata
   
         for (let i = 0; i < data.length; i++) {
           if (data[i].hasOwnProperty('violation_code') && !violations.includes(data[i].violation_code)) {
             violations.push(data[i].violation_code)
             violationnumbers.push(1)
+            violationdescriptions.push(data[i].violation_description)
           } else if (data[i].hasOwnProperty('violation_code')) {
             let index = violations.indexOf(data[i].violation_code)
             violationnumbers[index] += 1
           }
         }
   
-        let all = []
+        const all = []
         let violationnumbers2 = []
         let violations2 = []
-  
+        let descriptions2 = []
         for (let i = 0; i < violationnumbers.length; i++) {
           if (violationnumbers[i] > 1000) {
             let temp = []
             temp.push(violationnumbers[i])
             temp.push(violations[i])
+            temp.push(violationdescriptions[i])
             all.push(temp)
           }
         }
   
         all.sort((a, b) => b[0] - a[0])
-  
+        
         for (let i = 0; i < all.length; i++) {
           violationnumbers2.push(all[i][0])
           violations2.push(all[i][1])
+          descriptions2.push(all[i][2])
         }
-        console.log(violations2)
+        console.log(all)
+        this.all = all
         this.chartData = {
           labels: violations2,
           datasets: [
@@ -102,5 +115,8 @@
     margin-top: 40px;
     height: 800px;
     width:800px;
+  }
+  table {
+    margin-top: 20px;
   }
   </style>
