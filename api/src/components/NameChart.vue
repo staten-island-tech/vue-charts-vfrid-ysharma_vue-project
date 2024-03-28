@@ -103,7 +103,7 @@ export default {
  
   .chartcontainer {
     margin-top: 50px;
-    height: 700px;
-    width: 1350px;
+    height: 650px;
+    width: 1200px;
   }
   </style>

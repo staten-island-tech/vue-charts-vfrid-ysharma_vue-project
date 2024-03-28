@@ -113,8 +113,8 @@
   
   .chartcontainer {
     margin-top: 40px;
-    height: 800px;
-    width:800px;
+    height: 750px;
+    width:750px;
   }
   table {
     margin-top: 20px;

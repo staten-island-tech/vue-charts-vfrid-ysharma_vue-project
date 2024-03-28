@@ -90,8 +90,8 @@ ChartJS.register(ArcElement, Tooltip, Legend)
   }
   
   .chartcontainer {
-    margin-top: 40px;
-    height: 850px;
-    width:850px;
+    margin-top: 20px;
+    height: 770px;
+    width:770px;
   }
   </style>
