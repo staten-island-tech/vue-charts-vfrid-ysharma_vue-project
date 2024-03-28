@@ -4,7 +4,7 @@ import { RouterLink, RouterView } from 'vue-router'
 
 
 <template>
-
+<h1>Restaurant Inspection Violations</h1>
 
   <RouterView />
 </template>
